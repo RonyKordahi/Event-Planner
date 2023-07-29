@@ -90,6 +90,10 @@ Updates a scheduled event's information, the roles associated to it, and the eve
 
 If the command succeeds, a message will be displayed in the `event-planner` channel and in the event's text channel. Also all `MEET-UPS` text channels will be sorted alphabetically.
 
+**Only the event organizer can update the event**
+
+> ⚠️ Mods will also be allowed to update events
+
 ## The Required Parameters
 
 ### Parameter: `name`
@@ -159,6 +163,10 @@ An **optional** parameter. The `image` parameter is used to set the event's bann
 Deletes a scheduled event, the roles associated to it, and the event's text channel based on the parameters provided.
 
 If the command succeeds, a message will be displayed in the `event-planner` channel.
+
+**Only the event organizer can delete the event.**
+
+> ⚠️ Mods will also be allowed to delete events.
 
 ## The Required Parameters
 
