@@ -164,7 +164,7 @@ If the command succeeds, a message will be displayed in the `event-planner` chan
 
 ### Parameter: `name`
 
-A **required** parameter. The `name` parameter is used to identify which event to update.
+A **required** parameter. The `name` parameter is used to identify which event to delete.
 
 > ⚠️ The name of the event must be an exact match, capitals and all.
 
