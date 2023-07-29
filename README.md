@@ -86,7 +86,7 @@ An **optional** parameter. The `image` parameter is used to set the event's bann
 
 # 2. The `/update-event` Slash Command
 
-Updates a scheduled event's information based on the parameters provided. Any parameter that is not provided will not be modified.
+Updates a scheduled event's information, the roles associated to it, and the event's text channel based on the parameters provided. Any parameter that is not provided will not be modified.
 
 If the command succeeds, a message will be displayed in the `event-planner` channel and in the event's text channel. Also all `MEET-UPS` text channels will be sorted alphabetically.
 
@@ -156,7 +156,7 @@ An **optional** parameter. The `image` parameter is used to set the event's bann
 
 # 3. The `/cancel-event` Slash Command
 
-Deletes the event, the roles associated to it, and the event's text channel based on the parameters provided.
+Deletes a scheduled event, the roles associated to it, and the event's text channel based on the parameters provided.
 
 If the command succeeds, a message will be displayed in the `event-planner` channel.
 
@@ -173,3 +173,27 @@ A **required** parameter. The `name` parameter is used to identify which event t
 ### Parameter: `reason`
 
 An **optional** parameter. The `reason` parameter is used to let others know why the event was deleted.
+
+---
+
+# Other interactions
+
+## Creating an Event
+
+Creating an event will give you the event's organize role.
+
+The sole purpose of this role is the make it easier for attendees to reach you by mentioning the role.
+
+eg: `@Example Event Organizer`
+
+## Subscribing to an Event
+
+Marking yourself as interested in attending an event will give you the event's attendee role.
+
+The sole purpose of this role is to make it easier to communicate with each other by mentioning the role. 
+
+Eg: `@Example Event`
+
+## Unsubscribing from an Event
+
+Removing yourself as interested in attending the event will remove the event's attendee role.
