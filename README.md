@@ -102,20 +102,6 @@ A **required** parameter. The `name` parameter is used to identify which event t
 
 > ⚠️ The name of the event must be an exact match, capitals and all.
 
-## The Optional Parameters
-
-### Parameter: `new-name`
-
-An **optional** parameter. The `new-name` parameter is used to modify the original name of the event, the name of the roles associated with the event, and the name of the event's text channel.
-
-### Parameter: `reason`
-
-An **optional** parameter. The `reason` parameter is used to let others know why the changes were made.
-
-### Parameter: `location`
-
-An **optional** parameter. The `location` parameter is used to determine where the event will take place. You can use this to change the voice channel or the address of the event.
-
 ### Parameter: `start-time`
 
 An **optional** parameter. The `start-time` parameter is used to set the starting date and time of the event.
@@ -139,6 +125,20 @@ An **optional** parameter. The `end-time` parameter is used to set the ending da
 > Examples: 
 > - Morning: `10:00 07/29/2023`
 > - Evening: `19:00 07/29/2023`
+
+## The Optional Parameters
+
+### Parameter: `new-name`
+
+An **optional** parameter. The `new-name` parameter is used to modify the original name of the event, the name of the roles associated with the event, and the name of the event's text channel.
+
+### Parameter: `reason`
+
+An **optional** parameter. The `reason` parameter is used to let others know why the changes were made.
+
+### Parameter: `location`
+
+An **optional** parameter. The `location` parameter is used to determine where the event will take place. You can use this to change the voice channel or the address of the event.
 
 ### Parameter: `description`
 

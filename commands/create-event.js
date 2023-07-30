@@ -161,10 +161,13 @@ module.exports = {
                         await interaction.editReply("The ending date cannot come before the starting date!");
                     }
                     else if (!dateRegex.test(scheduledStartTime)) {
-                        await interaction.editReply("Something is wrong with the date! Please follow this format: hh:mm MM/DD/YYYY and make sure the date is valid.");
+                        await interaction.editReply("Something is wrong with the starting date! Please follow this format: hh:mm MM/DD/YYYY and make sure the date is valid.");
                     }
                     else if (!dateRegex.test(scheduledEndTime)) {
-                        await interaction.editReply("Something is wrong with the date! Please follow this format: hh:mm MM/DD/YYYY and make sure the date is valid.");
+                        await interaction.editReply("Something is wrong with the ending date! Please follow this format: hh:mm MM/DD/YYYY and make sure the date is valid.");
+                    }
+                    else if (scheduledStartTime === scheduledEndTime) {
+                        await interaction.editReply("The starting and ending dates cannot be the same!");
                     }
                     else {
 
@@ -248,7 +251,7 @@ module.exports = {
 
                                 // Create the event invite URL that generates an embed when pasted in a channel
                                 // ↪ Necessary to be created up here. Breaks the command if done too late in the code
-                                const eventUrl = await event.createInviteURL({ channel: selectedVoiceChannel ? "" : interaction.channel });
+                                const eventUrl = await event.createInviteURL({ channel: interaction.channel, maxAge: 0 });
 
 
 

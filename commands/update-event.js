@@ -151,11 +151,14 @@ module.exports = {
                 else if (startTime > endTime) {
                     await interaction.editReply("The ending date cannot come before the starting date!");
                 }
-                else if (dateRegex.test(startTime)) {
-                    await interaction.editReply("Wrong starting date format! Please follow this format: hh:mm MM/DD/YYYY.");
+                else if (!dateRegex.test(scheduledStartTime)) {
+                    await interaction.editReply("Something is wrong with the starting date! Please follow this format: hh:mm MM/DD/YYYY and make sure the date is valid.");
                 }
-                else if (dateRegex.test(endTime)) {
-                    await interaction.editReply("Wrong ending date format! Please follow this format: hh:mm MM/DD/YYYY.");
+                else if (!dateRegex.test(scheduledEndTime)) {
+                    await interaction.editReply("Something is wrong with the ending date! Please follow this format: hh:mm MM/DD/YYYY and make sure the date is valid.");
+                }
+                else if (scheduledStartTime === scheduledEndTime) {
+                    await interaction.editReply("The starting and ending dates cannot be the same!");
                 }
                 else {
 
