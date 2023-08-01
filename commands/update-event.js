@@ -158,13 +158,13 @@ module.exports = {
                 else if (startTime > endTime) {
                     await interaction.editReply("The `end-time` cannot come before the `start-time`!");
                 }
-                else if (!dateRegex.test(scheduledStartTime)) {
+                else if (!dateRegex.test(scheduledStartTime) && scheduledStartTime != "same") {
                     await interaction.editReply("Something is wrong with the `start-time`! Please follow this format: hh:mm MM/DD/YYYY and make sure the date is valid.");
                 }
-                else if (!dateRegex.test(scheduledEndTime)) {
+                else if (!dateRegex.test(scheduledEndTime) && scheduledEndTime !== "same") {
                     await interaction.editReply("Something is wrong with the `end-time`! Please follow this format: hh:mm MM/DD/YYYY and make sure the date is valid.");
                 }
-                else if (scheduledStartTime === scheduledEndTime) {
+                else if (scheduledStartTime === scheduledEndTime && scheduledStartTime != "same" && scheduledEndTime !== "same") {
                     await interaction.editReply("The starting and `end-time`s cannot be the same!");
                 }
                 else {
@@ -302,7 +302,7 @@ module.exports = {
 
                                     // Create the event invite URL that generates an embed when pasted in a channel
                                     // ↪ Necessary to be created up here. Breaks the command if done too late in the code
-                                    const eventUrl = await event.createInviteURL({ channel: selectedVoiceChannel ? "" : interaction.channel });
+                                    const eventUrl = await event.createInviteURL({ channel: interaction.channel, maxAge: 0 });
 
 
 
@@ -380,7 +380,7 @@ module.exports = {
                                     oldChannelName = oldChannelName.replace(" ", "-");
 
                                     const eventChannel = allChannels.find(textChannel => {
-                                        return textChannel.name === oldChannelName
+                                        return textChannel.name === oldChannelName;
                                     })
 
                                     // Moved out of the if to use it in the announcement
