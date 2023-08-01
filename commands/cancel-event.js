@@ -79,7 +79,7 @@ module.exports = {
                 // Checking that the event exists
                 // ↪ Doing a reverse check so the reply doesn't go to the bottom, saving scroll time if an edit is needed
                 if (!event) {
-                    await interaction.editReply(`The ${name} event doesn't exist. Please check the spelling of the event name.`);
+                    await interaction.editReply(`The \`${name}\` event doesn't exist. Please check the spelling of the event name.`);
                 }
                 else {
 
@@ -122,7 +122,7 @@ module.exports = {
                     // Only the event organizer, the server mods or the server owner are allowed to run the command
                     // ↪ Doing a reverse check so the reply doesn't go to the bottom, saving scroll time if an edit is needed
                     if (!(organizer || mod || owner)) {
-                        interaction.editReply({ content: "You can't delete this event, you're not the organizer!", ephemeral: true });
+                        interaction.editReply("You can't delete this event, you're not the organizer!");
                     }
                     else {
 

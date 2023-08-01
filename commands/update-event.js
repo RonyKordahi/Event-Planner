@@ -1,3 +1,4 @@
+const moment = require('moment-timezone');
 const containsEmoji = require('contains-emoji');
 const { SlashCommandBuilder, GuildScheduledEventEntityType, GuildScheduledEventPrivacyLevel, ChannelType } = require("discord.js");
 
@@ -142,23 +143,29 @@ module.exports = {
                 const endTime = new Date(scheduledEndTime);
                 const startTime = new Date(scheduledStartTime);
 
+                const convertedEndTime = moment.tz(scheduledEndTime, "hh:mm MM/DD/YYYY", "America/Toronto");
+                const utcEndTime = convertedEndTime.tz("UTC").format();
+
+                const convertedStartTime = moment.tz(scheduledStartTime, "hh:mm MM/DD/YYYY", "America/Toronto");
+                const utcStartTime = convertedStartTime.tz("UTC").format();
+
                 if (now > startTime) {
-                    await interaction.editReply("The starting date cannot be in the past!");
+                    await interaction.editReply("The `start-time` cannot be in the past!");
                 }
                 else if (now > endTime) {
-                    await interaction.editReply("The ending date cannot be in the past!");
+                    await interaction.editReply("The `end-time` cannot be in the past!");
                 }
                 else if (startTime > endTime) {
-                    await interaction.editReply("The ending date cannot come before the starting date!");
+                    await interaction.editReply("The `end-time` cannot come before the `start-time`!");
                 }
                 else if (!dateRegex.test(scheduledStartTime)) {
-                    await interaction.editReply("Something is wrong with the starting date! Please follow this format: hh:mm MM/DD/YYYY and make sure the date is valid.");
+                    await interaction.editReply("Something is wrong with the `start-time`! Please follow this format: hh:mm MM/DD/YYYY and make sure the date is valid.");
                 }
                 else if (!dateRegex.test(scheduledEndTime)) {
-                    await interaction.editReply("Something is wrong with the ending date! Please follow this format: hh:mm MM/DD/YYYY and make sure the date is valid.");
+                    await interaction.editReply("Something is wrong with the `end-time`! Please follow this format: hh:mm MM/DD/YYYY and make sure the date is valid.");
                 }
                 else if (scheduledStartTime === scheduledEndTime) {
-                    await interaction.editReply("The starting and ending dates cannot be the same!");
+                    await interaction.editReply("The starting and `end-time`s cannot be the same!");
                 }
                 else {
 
@@ -219,7 +226,7 @@ module.exports = {
                         // Only the event organizer, the server mods or the server owner are allowed to run the command
                         // ↪ Doing a reverse check so the reply doesn't go to the bottom, saving scroll time if an edit is needed
                         if (!(organizer || mod || owner)) {
-                            interaction.editReply({ content: "You can't update this event, you're not the organizer!", ephemeral: true });
+                            interaction.editReply("You can't update this event, you're not the organizer!");
                         }
                         else {
 
