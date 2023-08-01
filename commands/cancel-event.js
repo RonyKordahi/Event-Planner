@@ -172,7 +172,7 @@ module.exports = {
                         let channelName = name.replace(regex, "").toLowerCase();
 
                         // Replace all spaces with a dash
-                        channelName = channelName.replace(" ", "-");
+                        channelName = channelName.replaceAll(" ", "-");
 
                         const eventChannel = allChannels.find(textChannel => {
                             return textChannel.name === channelName
@@ -190,12 +190,12 @@ module.exports = {
 
                         // Edits the deferred reply
                         // ↪ Only visible to the event organizer
-                        await interaction.editReply("Everything was deleted successfully!");
+                        await interaction.editReply("The event was cancelled and everything was deleted successfully!");
 
                         // Send a message to everybody
                         // ↪ Conditionally add the reason to the message
                         await interaction.channel.send(`
-                            ${member} has deleted the \`${name}\` event!
+                            ${member} has cancelled the \`${name}\` event!
                             ${reason ? `\nReason: ${reason}` : ""}
                         `);
                     }

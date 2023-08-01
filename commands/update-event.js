@@ -23,12 +23,16 @@ module.exports = {
                 .setRequired(true))
         .addStringOption((option) =>
             option
+                .setName("location")
+                .setDescription("Change the location details of the event."))
+        .addStringOption((option) =>
+            option
                 .setName("new-name")
                 .setDescription("The new name of the event."))
         .addStringOption((option) =>
             option
-                .setName("location")
-                .setDescription("Change the location details of the event."))
+                .setName("reason")
+                .setDescription("Let people know why you changed the event details!"))
         .addStringOption((option) =>
             option
                 .setName("description")
@@ -67,11 +71,7 @@ module.exports = {
                     { name: "NotQuiteBlack", value: "NotQuiteBlack" },
                     { name: "DarkButNotBlack", value: "DarkButNotBlack" },
                     { name: "Random", value: "Random" },
-                ))
-        .addStringOption((option) =>
-            option
-                .setName("reason")
-                .setDescription("Let people know why you changed the event details!")),
+                )),
 
     async execute(interaction) {
 
@@ -296,7 +296,7 @@ module.exports = {
                                         privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
                                         image: image === "random" ? "https://picsum.photos/500" : image,
                                         entityMetadata: { location: selectedVoiceChannel ? "" : location ? location : event.entityMetadata.location },
-                                        description: `Event organizer: ${member.displayName}.\n${description ? description : ""}`,
+                                        description: `Event organizer: ${member.displayName}.\n\n${description ? description : ""}`,
                                         entityType: selectedVoiceChannel ? GuildScheduledEventEntityType.Voice : GuildScheduledEventEntityType.External,
                                     });
 
@@ -377,7 +377,7 @@ module.exports = {
                                     let oldChannelName = name.replace(regex, "").toLowerCase();
 
                                     // Replace all spaces with a dash
-                                    oldChannelName = oldChannelName.replace(" ", "-");
+                                    oldChannelName = oldChannelName.replaceAll(" ", "-");
 
                                     const eventChannel = allChannels.find(textChannel => {
                                         return textChannel.name === oldChannelName;
@@ -436,7 +436,7 @@ module.exports = {
                                     // ↪ Conditionally add the reason to the message
                                     await interaction.channel.send(`
                                         ${member} has updated the \`${name}\` event!${reason ? `\nReason: ${reason}` : ""}
-                                        \nChanges made include:${newName ? `\n- The event name is now \`${newName}\`.` : ""}${scheduledStartTime !== "same" ? `\n- The start time is now ${scheduledStartTime}.` : ""}${scheduledEndTime !== "same" ? `\n- The end time is now ${scheduledEndTime}.` : ""}${location ? `\n- The location is now \`${location}\`.` : ""}${description ? `\n- The description is now \`${description}\`.` : ""}${image ? `\n- The image has been updated!` : ""}${color ? `\n- The new role color is ${color}.` : ""}${eventRole ? `\n- The new event role is called ${eventRole}` : ""}${organizerRole ? `\n- The new event role is called ${organizerRole}` : ""}${newChannelName ? `\n- The name of the event channel changed from \`${oldChannelName}\` to ${eventChannel}` : ""}
+                                        \nChanges made include:${newName ? `\n- The event name is now \`${newName}\`.` : ""}${scheduledStartTime !== "same" ? `\n- The start time is now ${scheduledStartTime}.` : ""}${scheduledEndTime !== "same" ? `\n- The end time is now ${scheduledEndTime}.` : ""}${location ? `\n- The location is now \`${location}\`.` : ""}${description ? `\n- The description is now \`${description}\`.` : ""}${image ? `\n- The image has been updated!` : ""}${color ? `\n- The new role color is ${color}.` : ""}${eventRole ? `\n- The new event role is called ${eventRole}` : ""}${organizerRole ? `\n- The new event role is called ${organizerRole}` : ""}${newChannelName ? `\n- The name of the event channel changed from \`${oldChannelName}\` to ${eventChannel}` : `\n- Discuss event details here: ${eventChannel}`}
 
                                         \nCheck out the new event: ${eventUrl}
                                     `);

@@ -13,11 +13,6 @@ module.exports = {
                 .setRequired(true))
         .addStringOption((option) =>
             option
-                .setName("location")
-                .setDescription("If the event is online, enter the name of the voice channel. Paste the address if it's in person.")
-                .setRequired(true))
-        .addStringOption((option) =>
-            option
                 .setName("start-time")
                 .setDescription("The start time and date of the event. Please follow this format: hh:mm MM/DD/YYYY.")
                 .setRequired(true))
@@ -25,6 +20,11 @@ module.exports = {
             option
                 .setName("end-time")
                 .setDescription("The end time and date of the event. Please follow this format: hh:mm MM/DD/YYYY.")
+                .setRequired(true))
+        .addStringOption((option) =>
+            option
+                .setName("location")
+                .setDescription("If the event is online, enter the name of the voice channel. Paste the address if it's in person.")
                 .setRequired(true))
         .addStringOption((option) =>
             option
@@ -252,7 +252,7 @@ module.exports = {
                                     privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
                                     image: image === "random" ? "https://picsum.photos/500" : image,
                                     entityMetadata: { location: selectedVoiceChannel ? "" : location },
-                                    description: `Event organizer: ${member.displayName}.\n${description ? description : ""}`,
+                                    description: `Event organizer: ${member.displayName}.\n\n${description ? description : ""}`,
                                     entityType: selectedVoiceChannel ? GuildScheduledEventEntityType.Voice : GuildScheduledEventEntityType.External,
                                 })
 
@@ -297,7 +297,7 @@ module.exports = {
                                 let channelName = name.replace(regex, "").toLowerCase();
 
                                 // Replace all spaces with a dash
-                                channelName = channelName.replace(" ", "-");
+                                channelName = channelName.replaceAll(" ", "-");
 
                                 // Check if the text channel already exists or not
                                 const foundChannel = allChannels.find(textChannel => {
