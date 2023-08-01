@@ -290,8 +290,8 @@ module.exports = {
 
                                     await event.edit({
                                         name: newName ? newName : name,
-                                        scheduledEndTime: scheduledEndTime === "same" ? event.scheduledEndTime : scheduledEndTime,
-                                        scheduledStartTime: scheduledStartTime === "same" ? event.scheduledStartTime : scheduledStartTime,
+                                        scheduledEndTime: scheduledEndTime === "same" ? event.scheduledEndTime : utcEndTime,
+                                        scheduledStartTime: scheduledStartTime === "same" ? event.scheduledStartTime : utcStartTime,
                                         channel: selectedVoiceChannel,
                                         privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
                                         image: image === "random" ? "https://picsum.photos/500" : image,
