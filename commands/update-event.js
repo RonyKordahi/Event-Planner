@@ -296,7 +296,7 @@ module.exports = {
                                         privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
                                         image: image === "random" ? "https://picsum.photos/500" : image,
                                         entityMetadata: { location: selectedVoiceChannel ? "" : location ? location : event.entityMetadata.location },
-                                        description: `Event organizer: ${member.displayName}.\n\n${description ? description : ""}`,
+                                        description: description ? `Event organizer: ${member.displayName}.\n\n${description}`: event.description,
                                         entityType: selectedVoiceChannel ? GuildScheduledEventEntityType.Voice : GuildScheduledEventEntityType.External,
                                     });
 
