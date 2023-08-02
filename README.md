@@ -33,3 +33,14 @@ Eg: `@Example Event`
 ## Unsubscribing from an Event
 
 The bot will unassign you the event's attendee role if you remove yourself as interested in attending an event.
+
+---
+
+# Resources Used
+
+This bot was created with the help of the `Discord.js` documentation.
+
+1. [The Guide](https://discordjs.guide/#before-you-begin)
+2. [The Documentation (v14.11.0)](https://old.discordjs.dev/#/docs/discord.js/14.11.0/general/welcome)
+3. [The Discord Server](https://discord.com/invite/djs)
+4. [ChatGPT](https://chat.openai.com/chat) (for regex generation)
