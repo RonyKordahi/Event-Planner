@@ -44,7 +44,9 @@ and 1 [optional parameters](#the-optional-parameters):
 
 ### Parameter: `name`
 
-A **required** parameter. The `name` parameter is used to identify which event to delete.
+A **required** parameter. 
+
+The `name` parameter is used to identify which event to delete.
 
 > ⚠️ The name of the event must be an exact match, capitals and all.
 
@@ -56,6 +58,8 @@ A **required** parameter. The `name` parameter is used to identify which event t
 
 ### Parameter: `reason`
 
-An **optional** parameter. The `reason` parameter is used to let others know why the event was deleted.
+An **optional** parameter. 
+
+The `reason` parameter is used to let others know why the event was deleted.
 
 [Back to Parameters](#the-parameters) | [Back to top](#1-the-create-event-slash-command) | [Back to README](../README.md)

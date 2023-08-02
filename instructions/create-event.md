@@ -74,7 +74,9 @@ Basically, everything revoles around this parameter.
 
 ### Parameter: `start-time`
 
-A **required** parameter. The `start-time` parameter is used to set the starting date and time of the event.
+A **required** parameter. 
+
+The `start-time` parameter is used to set the starting date and time of the event.
 
 > ⚠️ The bot only accepts the following format: `hh:mm MM/DD/YYYY`
 >
@@ -90,7 +92,9 @@ A **required** parameter. The `start-time` parameter is used to set the starting
 
 ### Parameter: `end-time`
 
-A **required** parameter. The `end-time` parameter is used to set the end date and time of the event.
+A **required** parameter. 
+
+The `end-time` parameter is used to set the end date and time of the event.
 
 > ⚠️ The bot only accepts the following format: `hh:mm MM/DD/YYYY`
 >
@@ -122,7 +126,9 @@ If the event is online, enter the name of the voice channel where it will take p
 
 ### Parameter: `description`
 
-An **optional** parameter. The `description` parameter is used to set the event's description.
+An **optional** parameter. 
+
+The `description` parameter is used to set the event's description.
 
 If no description is provided, it will put the name of the organizer in the description by default.
 
@@ -132,7 +138,9 @@ If no description is provided, it will put the name of the organizer in the desc
 
 ### Parameter: `image`
 
-An **optional** parameter. The `image` parameter is used to set the event's banner. 
+An **optional** parameter. 
+
+The `image` parameter is used to set the event's banner. 
 
 Type `"random"` for a random picture!
 
@@ -144,7 +152,9 @@ Type `"random"` for a random picture!
 
 ### Parameter: `color`
 
-An **optional** parameter. The `color` parameter is used to set the color of the event roles created. Leave empty for the default color.
+An **optional** parameter. 
+
+The `color` parameter is used to set the color of the event roles created. Leave empty for the default color.
 
 > ⚠️ You can only select a color from the provided list that the bot will provide.
 

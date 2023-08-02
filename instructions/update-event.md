@@ -59,7 +59,9 @@ and 6 [optional parameters](#the-optional-parameters):
 
 ### Parameter: `name`
 
-A **required** parameter. The `name` parameter is used to identify which event to update.
+A **required** parameter. 
+
+The `name` parameter is used to identify which event to update.
 
 > ⚠️ The name of the event must be an exact match, capitals and all.
 
@@ -69,7 +71,9 @@ A **required** parameter. The `name` parameter is used to identify which event t
 
 ### Parameter: `start-time`
 
-An **required** parameter. The `start-time` parameter is used to update the starting date and time of the event.
+An **required** parameter. 
+
+The `start-time` parameter is used to update the starting date and time of the event.
 
 If the `start-time` doesn't need to be modified, send `"same"` and it won't be modified.
 
@@ -87,7 +91,9 @@ If the `start-time` doesn't need to be modified, send `"same"` and it won't be m
 
 ### Parameter: `end-time`
 
-An **required** parameter. The `end-time` parameter is used to set the ending date and time of the event.
+An **required** parameter. 
+
+The `end-time` parameter is used to set the ending date and time of the event.
 
 If the `end-time` doesn't need to be modified, send `"same"` and it won't be modified.
 
@@ -107,7 +113,9 @@ If the `end-time` doesn't need to be modified, send `"same"` and it won't be mod
 
 ### Parameter: `location`
 
-An **optional** parameter. The `location` parameter is used to determine where the event will take place. 
+An **optional** parameter. 
+
+The `location` parameter is used to determine where the event will take place. 
 
 You can use this to change the voice channel or the address of the event.
 
@@ -117,7 +125,9 @@ You can use this to change the voice channel or the address of the event.
 
 ### Parameter: `new-name`
 
-An **optional** parameter. The `new-name` parameter is used to modify the original name of the event, the name of the roles associated with the event, and the name of the event's text channel.
+An **optional** parameter. 
+
+The `new-name` parameter is used to modify the original name of the event, the name of the roles associated with the event, and the name of the event's text channel.
 
 Basically, almost everything will be changed by this parameter.
 
@@ -127,7 +137,9 @@ Basically, almost everything will be changed by this parameter.
 
 ### Parameter: `reason`
 
-An **optional** parameter. The `reason` parameter is used to let others know why the changes were made.
+An **optional** parameter. 
+
+The `reason` parameter is used to let others know why the changes were made.
 
 [Back to Parameters](#the-parameters) | [Back to top](#1-the-create-event-slash-command)
 
@@ -135,7 +147,9 @@ An **optional** parameter. The `reason` parameter is used to let others know why
 
 ### Parameter: `description`
 
-An **optional** parameter. The `description` parameter is used to set the event's description.
+An **optional** parameter. 
+
+The `description` parameter is used to set the event's description.
 
 If no description is provided, it will put the name of the organizer in the description by default.
 
@@ -145,7 +159,9 @@ If no description is provided, it will put the name of the organizer in the desc
 
 ### Parameter: `image`
 
-An **optional** parameter. The `image` parameter is used to set the event's banner. 
+An **optional** parameter. 
+
+The `image` parameter is used to set the event's banner. 
 
 Type `"random"` for a random picture!
 
@@ -157,7 +173,9 @@ Type `"random"` for a random picture!
 
 ### Parameter: `color`
 
-An **optional** parameter. The `color` parameter is used to set the color of the event roles created. Leave empty for the default color.
+An **optional** parameter. 
+
+The `color` parameter is used to set the color of the event roles created. Leave empty for the default color.
 
 > ⚠️ You can only select a color from the provided list that the bot will provide.
 
