@@ -294,7 +294,7 @@ module.exports = {
                                         scheduledStartTime: scheduledStartTime === "same" ? event.scheduledStartTime : utcStartTime,
                                         channel: selectedVoiceChannel,
                                         privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
-                                        image: image === "random" ? "https://picsum.photos/500" : image,
+                                        image: image === "random" ? "https://picsum.photos/500" : image ? image : event.image,
                                         entityMetadata: { location: selectedVoiceChannel ? "" : location ? location : event.entityMetadata.location },
                                         description: description ? `Event organizer: ${member.displayName}.\n\n${description}`: event.description,
                                         entityType: selectedVoiceChannel ? GuildScheduledEventEntityType.Voice : GuildScheduledEventEntityType.External,
