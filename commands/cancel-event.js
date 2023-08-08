@@ -41,8 +41,8 @@ module.exports = {
 
             // The name of the event sent through the slash command
             const name = interaction.options.getString("name");
-            const deleteChannel = interaction.options.getBoolean("delete-channel");
             const reason = interaction.options.getString("reason");
+            const deleteChannel = interaction.options.getBoolean("delete-channel");
 
             // Member data sent through the interaction
             // ↪ Used to validate the event organizer role
