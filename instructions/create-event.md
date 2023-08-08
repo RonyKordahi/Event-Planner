@@ -156,6 +156,6 @@ An **optional** parameter.
 
 The `color` parameter is used to set the color of the event roles created. Leave empty for the default color.
 
-> ⚠️ You can only select a color from the provided list that the bot will provide.
+> ⚠️ You can only select a color from the list that the bot will provide.
 
 [Back to Parameters](#the-parameters) | [Back to top](#1-the-create-event-slash-command) | [Back to README](../README.md)

@@ -54,6 +54,18 @@ The `name` parameter is used to identify which event to delete.
 
 ---
 
+### Parameter: `delete-channel`
+
+A **required** parameter. 
+
+The `delete-channel` parameter is used to determine whether or not to delete the event's text-channel.
+
+> ⚠️ You can only select an option from the list that the bot will provide.
+
+[Back to Parameters](#the-parameters) | [Back to top](#1-the-create-event-slash-command)
+
+---
+
 ## The Optional Parameters
 
 ### Parameter: `reason`

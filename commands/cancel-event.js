@@ -9,6 +9,11 @@ module.exports = {
                 .setName("name")
                 .setDescription("The name of the event.")
                 .setRequired(true))
+        .addBooleanOption(option =>
+            option
+                .setName("delete-channel")
+                .setDescription("Whether or not to delete the event's text channel.")
+                .setRequired(true))
         .addStringOption((option) =>
             option
                 .setName("reason")
@@ -36,6 +41,7 @@ module.exports = {
 
             // The name of the event sent through the slash command
             const name = interaction.options.getString("name");
+            const deleteChannel = interaction.options.getBoolean("delete-channel");
             const reason = interaction.options.getString("reason");
 
             // Member data sent through the interaction
@@ -164,6 +170,8 @@ module.exports = {
                         // Channel Deletion //
                         // **************** //
 
+                        // Grab the text channel to announce the deletion
+
                         // Thank you ChatGPT
                         // Regex that keeps letters, numbers, dashes, underscores, and spaces
                         const regex = /[^A-Za-z0-9-_ ]/g;
@@ -178,9 +186,12 @@ module.exports = {
                             return textChannel.name === channelName
                         })
 
-                        await eventChannel.delete();
+                        // Only delete the text channel if it was specified
+                        if (deleteChannel) {
 
+                            await eventChannel.delete();
 
+                        }
 
 
 
@@ -198,6 +209,18 @@ module.exports = {
                             ${member} has cancelled the \`${name}\` event!
                             ${reason ? `\nReason: ${reason}` : ""}
                         `);
+
+                        if (!deleteChannel) {
+
+                            const message = await eventChannel.send({
+                                content: `
+                                    ${member} has cancelled the \`${name}\` event!
+                                    ${reason ? `\nReason: ${reason}` : ""}
+                                `,
+                            });
+
+                            await message.pin();
+                        }
                     }
                 }
             }
