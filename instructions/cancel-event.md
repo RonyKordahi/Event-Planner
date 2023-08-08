@@ -31,6 +31,7 @@ Only the event organizer can cancel the event.
 The `/cancel-event` slash command has 1 [required parameters](#the-required-parameters):
 
 - [name](#parameter-name)
+- [delete-channel](#parameter-delete-channel)
 
 and 1 [optional parameters](#the-optional-parameters):
 
