@@ -188,9 +188,7 @@ module.exports = {
 
                         // Only delete the text channel if it was specified
                         if (deleteChannel) {
-
                             await eventChannel.delete();
-
                         }
 
 

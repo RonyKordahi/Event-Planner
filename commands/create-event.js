@@ -319,16 +319,16 @@ module.exports = {
                                     // Get all text channels in the same category
                                     const textChannels = fetchedChannels.filter((channel) => {
 
-                                        return channel.type === ChannelType.GuildText && channel.parentId === category.id && channel.name !== "📷event-photos" && channel.name !== "event-planner"
+                                        return channel.type === ChannelType.GuildText && channel.parentId === category.id && channel.name !== "📷event-photos" && channel.name !== "event-planner" && channel.name !== "general-events"
                                     });
 
                                     // Sort the channels alphabetically based on their names
                                     // ↪ Thank you ChatGPT
                                     const sortedChannels = textChannels.sort((a, b) => a.name.localeCompare(b.name));
 
-                                    // Update the positions of the newly sorted channels. Start at 2 to avoid ordering first 2 channels
+                                    // Update the positions of the newly sorted channels. Start at 3 to avoid ordering first 3 channels
                                     // ↪ Thank you ChatGPT
-                                    let position = 2;
+                                    let position = 3;
                                     for (const channel of sortedChannels.values()) {
                                         await channel.setPosition(position++);
                                     }
