@@ -2,17 +2,17 @@
 
 ### What does this command do?
 
-Based on the parameters provided, it can:
+Based on the parameters provided, it can update the following:
 
-- Update the name of the event.
-- Update the event roles' names (both organizer and attendee roles).
-- Update the event roles' colors (both organizer and attendee roles).
-- Update the starting time of the event.
-- Update the end time of the event.
-- Update the location of the event.
-- Update the name of the text channel in the `MEET-UPS` category.
-- Update the description of the event.
-- Update the image of the event.
+- The name of the event.
+- The event roles' names (both organizer and attendee roles).
+- The event roles' colors (both organizer and attendee roles).
+- The starting time of the event.
+- The end time of the event.
+- The location of the event.
+- The name of the text channel in the `MEET-UPS` category.
+- The description of the event.
+- The image of the event.
 
 ### On success:
 
@@ -159,13 +159,15 @@ If no description is provided, it will put the name of the organizer in the desc
 
 ### Parameter: `image`
 
-An **optional** parameter. 
+Updating the image is temporarily disabled due to a bug caused by how Discord stores images in it's memory.
+
+<!-- An **optional** parameter. 
 
 The `image` parameter is used to set the event's banner. 
 
 Type `"random"` for a random picture!
 
-> ⚠️ The bot only accepts a valid image URL, or the `random` option.
+> ⚠️ The bot only accepts a valid image URL, or the `random` option. -->
 
 [Back to Parameters](#the-parameters) | [Back to top](#1-the-create-event-slash-command)
 
