@@ -285,20 +285,54 @@ module.exports = {
 
                                     // Finding the selected voice channel if there is one
                                     const selectedVoiceChannel = voiceChannels.find(channel => {
-                                        return channel.name === location;
+                                        if (location) {
+                                            return channel.name === location;
+                                        }
+                                        else {
+                                            return channel.name === event.channel.name;
+                                        }
                                     });
 
-                                    await event.edit({
-                                        name: newName ? newName : name,
-                                        scheduledEndTime: scheduledEndTime === "same" ? event.scheduledEndTime : utcEndTime,
-                                        scheduledStartTime: scheduledStartTime === "same" ? event.scheduledStartTime : utcStartTime,
-                                        channel: selectedVoiceChannel,
-                                        privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
-                                        // image: image === "random" ? "https://picsum.photos/500" : image ? image : event.image,
-                                        entityMetadata: { location: selectedVoiceChannel ? "" : location ? location : event.entityMetadata.location },
-                                        description: description ? `Event organizer: ${member.displayName}.\n\n${description}`: event.description,
-                                        entityType: selectedVoiceChannel ? GuildScheduledEventEntityType.Voice : GuildScheduledEventEntityType.External,
-                                    });
+                                    // Original, doesn't work with voice channels
+                                    // Images also broken
+                                    // await event.edit({
+                                    //     name: newName ? newName : name,
+                                    //     scheduledEndTime: scheduledEndTime === "same" ? event.scheduledEndTime : utcEndTime,
+                                    //     scheduledStartTime: scheduledStartTime === "same" ? event.scheduledStartTime : utcStartTime,
+                                    //     channel: selectedVoiceChannel,
+                                    //     privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
+                                    //     // image: image === "random" ? "https://picsum.photos/500" : image ? image : event.image,
+                                    //     entityMetadata: { location: selectedVoiceChannel ? "" : location ? location : event.entityMetadata.location },
+                                    //     description: description ? `Event organizer: ${member.displayName}.\n\n${description}` : event.description,
+                                    //     entityType: selectedVoiceChannel ? GuildScheduledEventEntityType.Voice : GuildScheduledEventEntityType.External,
+                                    // });
+
+                                    // Don't put any metadata if it's a voice channel
+                                    if (selectedVoiceChannel) {
+                                        await event.edit({
+                                            name: newName ? newName : name,
+                                            scheduledEndTime: scheduledEndTime === "same" ? event.scheduledEndTime : utcEndTime,
+                                            scheduledStartTime: scheduledStartTime === "same" ? event.scheduledStartTime : utcStartTime,
+                                            channel: selectedVoiceChannel,
+                                            privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
+                                            // image: image === "random" ? "https://picsum.photos/500" : image ? image : event.image,
+                                            description: description ? `Event organizer: ${member.displayName}.\n\n${description}` : event.description,
+                                            entityType: selectedVoiceChannel ? GuildScheduledEventEntityType.Voice : GuildScheduledEventEntityType.External,
+                                        });
+                                    }
+                                    else {
+                                        await event.edit({
+                                            name: newName ? newName : name,
+                                            scheduledEndTime: scheduledEndTime === "same" ? event.scheduledEndTime : utcEndTime,
+                                            scheduledStartTime: scheduledStartTime === "same" ? event.scheduledStartTime : utcStartTime,
+                                            channel: selectedVoiceChannel,
+                                            privacyLevel: GuildScheduledEventPrivacyLevel.GuildOnly,
+                                            // image: image === "random" ? "https://picsum.photos/500" : image ? image : event.image,
+                                            entityMetadata: { location: selectedVoiceChannel ? "" : location ? location : event.entityMetadata.location },
+                                            description: description ? `Event organizer: ${member.displayName}.\n\n${description}` : event.description,
+                                            entityType: selectedVoiceChannel ? GuildScheduledEventEntityType.Voice : GuildScheduledEventEntityType.External,
+                                        });
+                                    }
 
                                     // Create the event invite URL that generates an embed when pasted in a channel
                                     // ↪ Necessary to be created up here. Breaks the command if done too late in the code
