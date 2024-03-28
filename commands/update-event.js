@@ -288,7 +288,7 @@ module.exports = {
                                         if (location) {
                                             return channel.name === location;
                                         }
-                                        else {
+                                        else if (event.channel) {
                                             return channel.name === event.channel.name;
                                         }
                                     });
