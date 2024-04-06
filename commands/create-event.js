@@ -258,7 +258,7 @@ module.exports = {
 
                                 // Create the event invite URL that generates an embed when pasted in a channel
                                 // ↪ Necessary to be created up here. Breaks the command if done too late in the code
-                                const eventUrl = await event.createInviteURL({ channel: interaction.channel, maxAge: 0 });
+                                const eventUrl = await event.createInviteURL({ channel: interaction.channel, maxAge: 259200 });
 
 
 
@@ -270,10 +270,10 @@ module.exports = {
                                 // ************** //
 
                                 // Create new role for the subscribers of the event
-                                const eventRole = await interaction.guild.roles.create({ name, color });
+                                const eventRole = await interaction.guild.roles.create({ name, color, mentionable: true });
 
                                 // Create new role for the organizer of the event
-                                const organizerRole = await interaction.guild.roles.create({ name: `${name} Organizer`, color });
+                                const organizerRole = await interaction.guild.roles.create({ name: `${name} Organizer`, color, mentionable: true });
 
                                 // Add roles to the member who ran the command
                                 await member.roles.add([organizerRole]);
@@ -354,7 +354,7 @@ module.exports = {
                                 // Send a message to everybody
                                 await interaction.channel.send(`
                                     ${member} has created the \`${name}\` event!
-                                    \nIf you mark yourself as interested will get the ${eventRole} role.
+                                    \nIf you mark yourself as interested, you will get the ${eventRole} role.
                                     \nDiscuss event details here: ${foundChannel ? foundChannel : eventChannel}
                                     \nCheck out the event: ${eventUrl}
                                 `);
@@ -366,7 +366,7 @@ module.exports = {
                                     message = await foundChannel.send({
                                         content: `
                                             \n${member} is organizing an event. They have been assigned the ${organizerRole} role.
-                                            \nIf you mark yourself as interested will get the ${eventRole} role.
+                                            \nIf you mark yourself as interested, you will get the ${eventRole} role.
                                             \nEvent info: ${eventUrl}
                                         `
                                     })

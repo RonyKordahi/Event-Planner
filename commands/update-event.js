@@ -336,7 +336,7 @@ module.exports = {
 
                                     // Create the event invite URL that generates an embed when pasted in a channel
                                     // ↪ Necessary to be created up here. Breaks the command if done too late in the code
-                                    const eventUrl = await event.createInviteURL({ channel: interaction.channel, maxAge: 0 });
+                                    const eventUrl = await event.createInviteURL({ channel: interaction.channel, maxAge: 259200 });
 
 
 
@@ -365,11 +365,11 @@ module.exports = {
                                             ) {
 
                                                 if (newName) {
-                                                    eventRole = await role.edit({ name: newName });
+                                                    eventRole = await role.edit({ name: newName, mentionable: true });
                                                 }
 
                                                 if (color) {
-                                                    eventRole = await role.edit({ color });
+                                                    eventRole = await role.edit({ color, mentionable: true });
                                                 }
                                             }
 
@@ -383,11 +383,11 @@ module.exports = {
                                             ) {
 
                                                 if (newName) {
-                                                    organizerRole = await role.edit({ name: `${newName} Organizer` });
+                                                    organizerRole = await role.edit({ name: `${newName} Organizer`, mentionable: true });
                                                 }
 
                                                 if (color) {
-                                                    organizerRole = await role.edit({ color });
+                                                    organizerRole = await role.edit({ color, mentionable: true });
                                                 }
                                             }
                                         }
