@@ -269,11 +269,47 @@ module.exports = {
                                 // Roles Creation //
                                 // ************** //
 
-                                // Create new role for the subscribers of the event
-                                const eventRole = await interaction.guild.roles.create({ name, color, mentionable: true });
+                                // Get all the roles
+                                const roles = await interaction.guild.roles.fetch();
 
-                                // Create new role for the organizer of the event
-                                const organizerRole = await interaction.guild.roles.create({ name: `${name} Organizer`, color, mentionable: true });
+                                let eventRole;
+                                let organizerRole;
+
+                                // Check if the roles existt already
+                                for (const role of roles.values()) {
+
+                                    if (
+                                        role.name === name
+                                        && role.name !== "Event Planner"
+                                        && role.name !== "@everyone"
+                                        && role.name !== "@here"
+                                        && role.name !== "Server Booster"
+                                        && role.name !== "Bot"
+                                    ) {
+                                        eventRole = role;
+                                    }
+
+                                    if (
+                                        role.name === `${name} Organizer`
+                                        && role.name !== "Event Planner"
+                                        && role.name !== "@everyone"
+                                        && role.name !== "@here"
+                                        && role.name !== "Server Booster"
+                                        && role.name !== "Bot"
+                                    ) {
+                                        organizerRole = role;
+                                    }
+                                }
+
+                                // Create new role for the subscribers of the event if it doesn't exist already
+                                if (!eventRole) {
+                                    eventRole = await interaction.guild.roles.create({ name, color, mentionable: true });
+                                }
+
+                                if (!organizerRole) {
+                                    // Create new role for the organizer of the event if it doesn't exist already
+                                    organizerRole = await interaction.guild.roles.create({ name: `${name} Organizer`, color, mentionable: true });
+                                }
 
                                 // Add roles to the member who ran the command
                                 await member.roles.add([organizerRole]);
