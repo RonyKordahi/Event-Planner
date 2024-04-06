@@ -287,6 +287,10 @@ module.exports = {
                                         && role.name !== "Bot"
                                     ) {
                                         eventRole = role;
+                                        
+                                        if(color) {
+                                            await eventRole.edit({ color, mentionable: true });
+                                        }
                                     }
 
                                     if (
@@ -298,6 +302,10 @@ module.exports = {
                                         && role.name !== "Bot"
                                     ) {
                                         organizerRole = role;
+
+                                        if (color) {
+                                            await organizerRole.edit({ color, mentionable: true });
+                                        }
                                     }
                                 }
 
