@@ -258,7 +258,7 @@ module.exports = {
 
                                 // Create the event invite URL that generates an embed when pasted in a channel
                                 // ↪ Necessary to be created up here. Breaks the command if done too late in the code
-                                const eventUrl = await event.createInviteURL({ channel: interaction.channel, maxAge: 259200 });
+                                const eventUrl = await event.createInviteURL({ channel: interaction.channel, maxAge: 0 });
 
 
 
