@@ -12,7 +12,6 @@ module.exports = {
         try {
             // Partials required so past events and user subscriptions get cached
             if (user.partial) {
-
                 // Fetches the missing user data
                 await user.fetch();
             }
@@ -34,9 +33,8 @@ module.exports = {
 
             for (const role of roles.values()) {
 
-                // need to make sure we don't delete the @everyone role, the bot's role, or roles that have similar names
+                // Only add the event role to the member
                 if (role.name === guildScheduledEvent.name && role.name !== "Event Planner" && role.name !== "@everyone") {
-
                     await member.roles.add(role);
                 }
             }

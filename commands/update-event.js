@@ -14,12 +14,12 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("start-time")
-                .setDescription("Change the start time and date of the event. If it doesn't need to change, type \"same\".")
+                .setDescription("The start time and date of the event (hh:mm MM/DD/YYYY). If it doesn't need to change, type \"same\".")
                 .setRequired(true))
         .addStringOption((option) =>
             option
                 .setName("end-time")
-                .setDescription("Change the end time and date of the event. If it doesn't need to change, type \"same\".")
+                .setDescription("The end time and date of the event (hh:mm MM/DD/YYYY). If it doesn't need to change, type \"same\".")
                 .setRequired(true))
         .addStringOption((option) =>
             option
@@ -336,7 +336,7 @@ module.exports = {
 
                                     // Create the event invite URL that generates an embed when pasted in a channel
                                     // ↪ Necessary to be created up here. Breaks the command if done too late in the code
-                                    const eventUrl = await event.createInviteURL({ channel: interaction.channel, maxAge: 0 });
+                                    const eventUrl = await event.createInviteURL({ channel: interaction.channel, maxAge: 259200 });
 
 
 
