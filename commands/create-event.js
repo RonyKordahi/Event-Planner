@@ -275,7 +275,7 @@ module.exports = {
                                 let eventRole;
                                 let organizerRole;
 
-                                // Check if the roles existt already
+                                // Check if the roles exists already
                                 for (const role of roles.values()) {
 
                                     if (
@@ -286,11 +286,9 @@ module.exports = {
                                         && role.name !== "Server Booster"
                                         && role.name !== "Bot"
                                     ) {
-                                        eventRole = role;
-                                        
-                                        if(color) {
-                                            await eventRole.edit({ color, mentionable: true });
-                                        }
+                                        // Re-create the role
+                                        await role.delete();
+                                        eventRole = await interaction.guild.roles.create({ name, color, mentionable: true });
                                     }
 
                                     if (
@@ -301,11 +299,9 @@ module.exports = {
                                         && role.name !== "Server Booster"
                                         && role.name !== "Bot"
                                     ) {
-                                        organizerRole = role;
-
-                                        if (color) {
-                                            await organizerRole.edit({ color, mentionable: true });
-                                        }
+                                        // Re-create the role
+                                        await role.delete();
+                                        organizerRole = await interaction.guild.roles.create({ name: `${name} Organizer`, color, mentionable: true });
                                     }
                                 }
 
