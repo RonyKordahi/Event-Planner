@@ -174,7 +174,7 @@ module.exports = {
 
                         // Thank you ChatGPT
                         // Regex that keeps letters, numbers, dashes, underscores, and spaces
-                        const regex = /[^A-Za-z0-9-_ ]/g;
+                        const regex = /[^A-Za-z0-9\-_\s!@#$%^&*(){}\[\]:;"'<>,.?/~`+=|\\]/g;
 
                         // Remove anything not in the regex
                         let channelName = name.replace(regex, "").toLowerCase();

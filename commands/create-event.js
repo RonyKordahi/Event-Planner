@@ -130,7 +130,7 @@ module.exports = {
 
                 // Regex that checks for special characters
                 // ↪ Thank you ChatGPT
-                const nameRegex = /[^A-Za-z0-9-_ ]/g;
+                const nameRegex = /[^A-Za-z0-9\-_\s!@#$%^&*(){}\[\]:;"'<>,.?/~`+=|\\]/g;
 
                 if (containsEmoji(name)) {
                     await interaction.editReply("The event name cannot contain emojis!");
@@ -331,7 +331,7 @@ module.exports = {
 
                                 // Regex that keeps letters, numbers, dashes, underscores, and spaces
                                 // ↪ Thank you ChatGPT
-                                const regex = /[^A-Za-z0-9-_ ]/g;
+                                const regex = /[^A-Za-z0-9\-_\s!@#$%^&*(){}\[\]:;"'<>,.?/~`+=|\\]/g;
 
                                 // Remove anything not in the regex
                                 let channelName = name.replace(regex, "").toLowerCase();

@@ -234,7 +234,7 @@ module.exports = {
                             // Name Validation //
                             // *************** //
 
-                            const regex = /[^A-Za-z0-9-_ ]/g;
+                            const regex = /[^A-Za-z0-9\-_\s!@#$%^&*(){}\[\]:;"'<>,.?/~`+=|\\]/g;
 
                             if (containsEmoji(name)) {
                                 await interaction.editReply("The event name cannot contain emojis!");
@@ -405,7 +405,7 @@ module.exports = {
 
                                     // Thank you ChatGPT
                                     // Regex that keeps letters, numbers, dashes, underscores, and spaces
-                                    const regex = /[^A-Za-z0-9-_ ]/g;
+                                    const regex = /[^A-Za-z0-9\-_\s!@#$%^&*(){}\[\]:;"'<>,.?/~`+=|\\]/g;
 
                                     // Remove anything not in the regex
                                     let oldChannelName = name.replace(regex, "").toLowerCase();
