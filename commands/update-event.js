@@ -401,14 +401,16 @@ module.exports = {
                                     // Channel Update //
                                     // ************** //
 
+
+
                                     // Top half of the code isn't inside the if because eventChannel is required to send the update message.
 
                                     // Thank you ChatGPT
                                     // Regex that keeps letters, numbers, dashes, underscores, and spaces
-                                    const regex = /[^A-Za-z0-9\-_\s!@#$%^&*(){}\[\]:;"'<>,.?/~`+=|\\]/g;
+                                    const channelRegex = /[^A-Za-z0-9-_ ]/g;
 
                                     // Remove anything not in the regex
-                                    let oldChannelName = name.replace(regex, "").toLowerCase();
+                                    let oldChannelName = name.replace(channelRegex, "").toLowerCase();
 
                                     // Replace all spaces with a dash
                                     oldChannelName = oldChannelName.replaceAll(" ", "-");
@@ -423,7 +425,7 @@ module.exports = {
                                     // Only update the channel name if a new event name was provided
                                     if (newName) {
 
-                                        newChannelName = newName.replace(regex, "").toLowerCase();
+                                        newChannelName = newName.replace(channelRegex, "").toLowerCase();
                                         newChannelName = newChannelName.replace(" ", "-");
 
                                         await eventChannel.edit({ name: newChannelName });
